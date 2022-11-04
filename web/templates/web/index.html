@@ -1,0 +1,139 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=1100">
+    <meta name="robots" content="all">
+    <link rel="stylesheet" href="{% static 'css/main.css'%}">
+    <!-- загрузка css из 'static/css/main.css'-->
+
+    <script type="text/javascript" src="{% static 'js/js_main.js' %}"></script>
+    <!-- загрузка js из 'static/js/js_main.js'-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- jQuery -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Rubik:wght@300&family=Ubuntu&display=swap" rel="stylesheet">
+    <title>Home page</title>
+</head>
+
+<body>
+    <h1>Пример текста h1 (css)<h1> <span class="span_selector">Пример текста span (js jQuery)<span>
+    <script>
+        jQuery(function($){
+            $('.span_selector').css({'color':'#d433332e', 'font-size': '22pt'});
+            console.log('test jQuery script')
+        });
+    </script>
+
+
+    <hr>
+    <span>1) Скачать и установить Python с <a href="https://www.python.org/downloads/">официального сайта</a></span>
+    <br>
+    <span>2) Запуститить команудную строку в Windows или терминал в macos</span>
+    <br>
+    <span>3) Установить Django командой 'pip3 install django'</span>
+    <br>
+    <span>4) Перейти в папку с проектом 'cd путь_до_папки/interview'</span>
+    <br>
+    <span>5) Запуск локального серевера 'python3 manage.py runserver'</span>
+    <br>
+    <span>6) <a href="http://127.0.0.1:8000">Перейти на адрес сервера </a></span>
+
+
+    <hr>
+    <span>Место хранение css "interview/web/static/css/main.css", js "interview/web/static/js/main.js"</span>
+    <br>
+    <span><a href="http://127.0.0.1:8000/admin/">Админ панель</a> Логин:admin, пароль:superpass, mail:admin@mail.ru</span>
+    <br>
+    <span><a href="http://127.0.0.1:8000/api/ru_json/">../api/ru_json</a> ; <a href="http://127.0.0.1:8000/api/us_json/">../api/us_json</a> ; <a href="http://127.0.0.1:8000/api/fr_json/">../api/fr_json</a> - API ответы с сервера ввиде JSON словаря с ключами 'country'<span>
+    <br>
+    <span><a href="http://127.0.0.1:8000/api/active_country_json/">../api/active_country_json</a> - API ответ с сервера ввиде JSON словаря со список активных стран, ключ 'data'</span>
+
+
+    <hr>
+    <span>Пример кода AJAX запроса на ../api/ru_json</a>:<span>
+    <br>
+    <script>
+        var elem = document.getElementsByClassName('span_for_ajax');
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if (this.readyState == 4 && this.status == 200){
+                myFunction(this.responseText)
+            };
+        };
+        xhttp.open("GET", "http://127.0.0.1:8000/api/ru_json/", true);
+        xhttp.send();
+
+        function myFunction(json_data){
+            console.log(json_data);
+          elem[0].innerHTML = json_data;
+        };
+    </script>
+    <span class="span_for_ajax"></span>
+    <hr>
+
+    <div class="wrapper">
+        <h2>Описание:</h2><br>
+
+        <p>0) Мобильная адаптация необезательна, но будет плюсом!!!</p>
+        <p>1) При нажатии или наборе текста в поле "Country" выпадает список активных стран из "../api/active_country_json".</p>
+        <img src="{% static '/img/country1.png' %}" alt="" style="width:545px;height:220px"><br>
+        <p>2) Присутсувует поиск, скролинг стран, максимальное кол-во стран в скролинге 8</p>
+        <img src="{% static '/img/country2.png' %}" alt="" style="width:610px;height:160px"><br>
+        <p>3) Возможен выбор только одной страны пользователем в поле "Country"</p>
+        <img src="{% static '/img/country3.png' %}" alt="" style="width:171px;height:66px"><br>
+
+        <hr>
+
+        <p>4) При нажатии или наборе текста в поле "Region(s) or city(s)" выпадает древовидное поле с такой же вложеностью как и в json ответе выбранной страны (Пример: "../api/ru_jso") </p>
+        <img src="{% static '/img/region1.png' %}" alt="" style="width:545px;height:220px"><br>
+        <p>Возможен выбор региона или регионов, так и отдельных городов в одиночке</p>
+        <img src="{% static '/img/region2.png' %}" alt="" style="width:545px;height:220px"><br>
+        <p>5) Присутсувует поиск и скролинг, возможность выбора всех регионов и городов "select all", отчистить все города и регионы "unselect all"</p>
+        <img src="{% static '/img/region3.png' %}" alt="" style="width:545px;height:220px"><br>
+        <img src="{% static '/img/region4.png' %}" alt="" style="width:545px;height:95px"><br>
+        <p>6) В конце данные из формы сохраняются в базе данных, из поля "Country" будет "Russia (RU)", а в поле "Region(s) or city(s)" сохраняются только города (без регионов) и каждый город отделен друг от друга переносом строки или запятой</p>
+        <img src="{% static '/img/db.png' %}" alt="" style="width:490px;height:220px"><br>
+
+        <hr>
+
+        <div style="color:#f25e35">
+            <p>При клике на свободную область, любая форма сворачиваются</p>
+            <p>Без выбранной страны в поле "Country", поле "Region(s) or city(s)" пустое или не доступное</p>
+            <img src="{% static '/img/region5.png' %}" alt="" style="width:545px;height:185px"><br>
+            <p>При выборе любой страны в поле "Country", поле "Region(s) or city(s)" заполняются все города и регионы (равносильно "select all"). Тоесть, если мы выбрали Россию, будут автоматом выбраны все города России</p>
+            <p>При выборе новой страны в поле "Country", при заполненом поле "Region(s) or city(s)", поле "Region(s) or city(s)" отчищается. (Нельзя заполнить и передать города с разных стран)</p>
+            <p>Запрос делается на api исходя из сокращения страны (если "Russia (RU)" - /api/ru_json/; если "United States (US)" - /api/us_json/ и т.п.)</p>
+        </div>
+
+
+
+
+    </div>
+    <hr>
+
+
+    <div class="wrapper">
+        <h3>Поля формы для задания:</h3>
+        <form method="post">
+            {% csrf_token %}
+            <!-- csrf_token необходим для безопастной отправки формы, без него не будет работать -->
+
+            <p>Country. Выбор страны:</p>
+            {{ form.country }}<br>
+            {{ form.country.errors }}<br>
+            <!-- Выводит текст ошибки для поля 'country' (если есть) -->
+
+            <p>Region(s) or city(s). Поле для выбора региона/регионов или отдельных городов:</p>
+            {{ form.regions_city }}<br>
+            {{ form.regions_city.errors }}<br>
+            <!-- Выводит текст ошибки для поля 'regions_city' (если есть) -->
+
+            <button type="submit">Add Task</button>
+        </form>
+    </div>
+</body>

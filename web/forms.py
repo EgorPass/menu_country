@@ -13,4 +13,6 @@ class Interview_form(forms.ModelForm):
         widgets = {
             'country': forms.TextInput(attrs={'class': 'style_task_form'}),
             'regions_city': forms.Textarea(attrs={'value': 123}),
+            # 'regions_city': forms.TextInput(attrs={'class': 'style_task_form'}),
+						
         }

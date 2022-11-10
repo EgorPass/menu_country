@@ -1,48 +1,161 @@
-h1 {
-    font-size: 25pt;
-    color: orange;
-    font-family: 'Rubik';
-    margin: 0;
-}
-
-h2 {
-    margin: 0;
-    padding-top: 50px;
-    text-align: center;
-}
-span{
-    font-size: 13pt;
-    color: black;
-    font-family: 'Ubuntu';
-}
-
-a{
-    color: orange;
-    font-family: 'Rubik';
-    font-size: 16pt;
-    text-transform: none;
-    text-decoration: none;
-}
-a:hover{
-    color: #ff3232;
-}
 
 .wrapper{
-    width: 100%;
-    margin-left: auto;
-    margin-right : auto;
-    max-width : 960px;
+	width: 100%;
+	margin: 50px auto;
+  max-width : 960px;
 }
 
-.wrapper span{
-    text-align: center;
+#id_country,
+#id_regions_city {
+	outline: rgb(88, 132, 226);
+	border: 1px solid gray;
+	border-radius: 3px;
+	box-shadow: 2px 2px 4px gray, 1px 2px 3px rgb(152, 152, 236);
+	padding: 4px 8px;
+	
+	background-color: rgb(250, 250, 250);
+
+	font: 16px/1.4 serif;
 }
 
-.wrapper p{
-    margin: 10px 0;
+.inputMenuContainer,
+.inputMenuContainer__country,
+.inputMenuContainer__select,
+.inputMenuContainer__regionName,
+.inputMenuContainer__cityContainer,
+.inputMenuContainer__city,
+.inputMenuContainer__listHover,
+.inputMenuContainer__regionName_open,
+.inputMenuContainer__regionName_close,
+.inputMenuContainer__regionName_toggle,
+.inputMenuContainer__inputDescription,
+.inputMenuContainer__checkboxStyled,
+.inputMenuContainer__checkboxStyled_check,
+.inputMenuContainer__checkboxStyled_uncheck,
+.inputMenuContainer__checkboxStyled_pre {
+	padding: 0;
+	margin: 0;
+	cursor: default;
 }
 
+.inputMenuContainer__listHover {
+	display: flex;
+	margin: 0 0 0 12px;
+	padding: 4px 6px;
+}
 
-.style_task_form{
-    width: 550px;
+.inputMenuContainer__country .inputMenuContainer__listHover {
+	margin-left: 0;
+}
+
+.inputMenuContainer__checkbox {
+	display: inline-flex;
+}
+
+.inputMenuContainer__listHover,
+.inputMenuContainer__checkbox { 
+	flex-flow: row nowrap;
+	align-items: center;
+}
+
+.inputMenuContainer {
+
+	user-select: none;
+	max-height: 225px;
+	min-width: 200px;
+	max-width: 400px;
+	list-style-type: none;
+	position: absolute;
+	padding: 5px 10px;
+	border: 1px solid gray;
+	background-color: white;
+	box-shadow: 2px 2px 4px gray, 1px 2px 3px rgb(152, 236, 166);
+	overflow: auto;
+	border-radius: 3px;
+	padding: 4px 6px;
+	background-color: rgb(250, 255, 250);
+}
+
+.inputMenuContainer__select {
+	color: blue;
+}
+
+.inputMenuContainer__listHover:hover{
+	background-color: rgba(152, 152, 236, 0.151);
+}
+
+.inputMenuContainer__regionName_open 
+.inputMenuContainer__cityContainer {
+	display: block;
+}
+
+.inputMenuContainer__regionName_close .inputMenuContainer__cityContainer {
+	font: 16px serif;
+	display: none;
+}
+
+.inputMenuContainer__regionName_toggle {
+	font-family: serif;
+	font-size: 16px;
+}
+
+.inputMenuContainer__city,
+.inputMenuContainer__regionName {
+	list-style-type: none;
+}
+
+.inputMenuContainer__city {
+	margin: 0 0 0 20px;
+}
+
+.inputMenuContainer__regionName_open,
+.inputMenuContainer__regionName_close {
+	position: relative
+}
+
+.inputMenuContainer__regionName_open:before,
+.inputMenuContainer__regionName_close:before {
+	position: absolute;
+}
+
+.inputMenuContainer__regionName_open:before {
+	content: "\25BE";
+}
+
+.inputMenuContainer__regionName_close:before {
+	content: "\25B8";
+}
+
+.inputMenuContainer__inputDescription,
+.inputMenuContainer__regionName_toggle {
+	margin: 0 0 0 5px;
+}
+
+.inputMenuContainer__checkbox input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+.inputMenuContainer__checkboxStyled {
+	width: 16px;
+	height: 16px;
+	background-image: url("http://127.0.0.1:8000/static/img/spriteCheckbox.png");
+	background-size: 80px 80px;
+	display: block;
+	background-repeat: no-repeat;
+}
+
+.inputMenuContainer__checkboxStyled_check {
+		background-position: -63px -33px;
+}
+
+.inputMenuContainer__checkboxStyled_uncheck {
+		background-position: -43px -33px;
+}
+
+.inputMenuContainer__checkboxStyled_pre {
+		background-position: -63px -7px;
 }
